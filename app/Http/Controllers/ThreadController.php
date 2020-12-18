@@ -10,7 +10,7 @@ class ThreadController extends Controller
 {
     function __construct()
     {
-        return $this->middleware('auth')->except('index', 'show', 'showsingle');
+        return $this->middleware('auth')->except('index', 'show', 'showsingle', 'posts_by_category');
     }
     
     /**
@@ -149,16 +149,17 @@ class ThreadController extends Controller
 
     public function posts_by_category($category)
     {
+        $category = str_replace('-', ' ', ucwords($category));
         $cat = Tag::where('name', $category)->first();
         if(!$cat){
             abort('404');
         }else{
             $cat_id = $cat->id;
-            $tag = Tag::find($category);
+            $tag = Tag::find($cat_id);
             $threads = $tag->threads()->orderBy('id', 'DESC')->paginate(1);
             $tag_name = strtoupper($tag->name);
             return view('thread.index', compact('threads'), ['tag_name'=>$tag_name]);
-        }   
+        }
     }
 
     /**
