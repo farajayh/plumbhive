@@ -147,7 +147,7 @@ class ThreadController extends Controller
         }*/
     }
 
-    public function post_by_category($category)
+    public function posts_by_category($category)
     {
         $cat = Tag::where('name', $category)->first();
         if(!$cat){

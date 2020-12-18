@@ -24,6 +24,7 @@ Auth::routes();
 
 //Route::get('/test/{slug}', 'ThreadController@showsingle');
 Route::get('/post/{slug}', 'ThreadController@showsingle');
+Route::get('/category/{category}', 'ThreadController@posts_by_category');
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 Route::get('/about', 'HomeController@about')->name('about');
 Route::get('/contact', 'HomeController@contact')->name('contact');
