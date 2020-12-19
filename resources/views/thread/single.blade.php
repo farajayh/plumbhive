@@ -81,15 +81,14 @@
                 <div class="col-md-4 col-lg-4" style="">
                     <div class="row mx-1">
                       <div class="col-md-12 mb-5 white" style="border-radius: 10px;">
-                          <h5 class="font-weight-bold mt-3">FORUM</h5> <hr class="blue">
+                      <h5 class="font-weight-bold mt-3">FORUM</h5> <hr class="blue">
                         <div class="mx-3 categories">
                             <ul style="list-style-type: circle;">
-                              <li><a href="">All Topics</a></li>
-                              <li><a href="">Plumbing Marketing</a></li>
-                              <li><a href="">Plumbing Tools</a></li>
-                              <li><a href="">Plumbing Engineers</a></li>
-                              <li><a href="">Fixing and Corrections</a></li>
-                              <li><a href="">Latest Materials</a></li>
+                              <li><a class="nav-link active p-1 m-0" href="{{ route('thread.index') }}">All Topics</a></li>
+                              @foreach(\App\Tag::all() as $tag)
+                                <!--<li><a class="nav-link active p-1 m-0" href="{{ route('thread.index', ['tags'=>$tag->id]) }}">{{ $tag->name }}</a></li>-->
+                                <li><a class="nav-link active p-1 m-0" href="{{ url('category/'.strtolower(str_replace(' ', '-', $tag->name))) }}">{{ $tag->name }}</a></li>
+                              @endforeach
                             </ul>
                         </div>
                       </div>

@@ -66,7 +66,7 @@
                             <div class="media mb-2">
                                 <div class="media-body border border-light rounded p-2">
                                     <h5 class="mt-0 font-weight-bold"><a href="{{ url('post/'.$thread->thread_slug) }}" class="head-topic">{{ $thread->subject }}</a></h5>
-                                  <p class="p-0 m-0" style="font-size:10px;"><a href="" style="font-weight:bold; color: #004483;">Posted by {{ $thread->user->name }} </a>on {{ $thread->created_at }} in
+                                  <p class="p-0 m-0" style="font-size:10px;"><a href="" style="font-weight:bold; color: #004483;">Posted by {{ $thread->user->name }} </a> {{ $thread->created_at->diffForHumans() }} in
                                   @foreach($thread->tags as $tag)
                                     <a href="" style="font-weight:bold; color: #004483;">{{$tag->name}}</a>
                                   @endforeach
@@ -139,22 +139,21 @@
                                     <img class="img-fluid" src="../images/placeholder_avatar.gif" alt="Generic placeholder image">
                                 </div>
                                 <div class="col-8">
-                                    <h5 class="mt-0 font-weight-bold"><a href="" style="color:#004483">Hi Mustapha</a></h5>
+                                    <h5 class="mt-0 font-weight-bold"><a href="" style="color:#004483">Hi {{ explode(' ',Auth::user()->name)[1] }}</a></h5>
                                     <p>Welcome to Plumbhive, where you can connect with Plumbers in the World</p>
                                 </div>
                               </div><hr style="border: 3px solid #004483;">
                         </div>
 
                       <div class="col-md-12 mb-5 white" style="border-radius: 10px;">
-                          <h5 class="font-weight-bold mt-3">FORUM</h5> <hr class="blue">
+                      <h5 class="font-weight-bold mt-3">FORUM</h5> <hr class="blue">
                         <div class="mx-3 categories">
                             <ul style="list-style-type: circle;">
-                              <li><a href="">All Topics</a></li>
-                              <li><a href="">Plumbing Marketing</a></li>
-                              <li><a href="">Plumbing Tools</a></li>
-                              <li><a href="">Plumbing Engineers</a></li>
-                              <li><a href="">Fixing and Corrections</a></li>
-                              <li><a href="">Latest Materials</a></li>
+                              <li><a class="nav-link active p-1 m-0" href="{{ route('thread.index') }}">All Topics</a></li>
+                              @foreach(\App\Tag::all() as $tag)
+                                <!--<li><a class="nav-link active p-1 m-0" href="{{ route('thread.index', ['tags'=>$tag->id]) }}">{{ $tag->name }}</a></li>-->
+                                <li><a class="nav-link active p-1 m-0" href="{{ url('category/'.strtolower(str_replace(' ', '-', $tag->name))) }}">{{ $tag->name }}</a></li>
+                              @endforeach
                             </ul>
                         </div>
                       </div>

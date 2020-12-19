@@ -47,7 +47,7 @@
                           <div class="media mb-2">
                                 <div class="media-body border border-light rounded p-2">
                                     <h5 class="mt-0 font-weight-bold"><a href="{{ url('post/'.$thread->thread_slug) }}" class="head-topic">{{ $thread->subject }}</a></h5>
-                                  <p class="p-0 m-0" style="font-size:10px;"><a href="" style="font-weight:bold; color: #004483;">Posted by {{ $thread->user->name }} </a>on {{ $thread->created_at }} in
+                                  <p class="p-0 m-0" style="font-size:10px;"><a href="" style="font-weight:bold; color: #004483;">Posted by {{ $thread->user->name }} </a> {{ $thread->created_at->diffForHumans() }} in
                                   @foreach($thread->tags as $tag)
                                     <a href="" style="font-weight:bold; color: #004483;">{{$tag->name}}</a>
                                   @endforeach
@@ -120,7 +120,8 @@
                             <ul style="list-style-type: circle;">
                               <li><a class="nav-link active p-1 m-0" href="{{ route('thread.index') }}">All Topics</a></li>
                               @foreach(\App\Tag::all() as $tag)
-                                <li><a class="nav-link active p-1 m-0" href="{{ route('thread.index', ['tags'=>$tag->id]) }}">{{ $tag->name }}</a></li>
+                                <!--<li><a class="nav-link active p-1 m-0" href="{{ route('thread.index', ['tags'=>$tag->id]) }}">{{ $tag->name }}</a></li>-->
+                                <li><a class="nav-link active p-1 m-0" href="{{ url('category/'.strtolower(str_replace(' ', '-', $tag->name))) }}">{{ $tag->name }}</a></li>
                               @endforeach
                             </ul>
                         </div>

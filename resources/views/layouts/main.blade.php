@@ -154,6 +154,9 @@
                       <div class="col-md-6 col-6">
                           <ul class="nav flex-column">
                           <li class="nav-item">
+                            <a class="nav-link active p-1 m-0" href="#">Profile</a>
+                          </li>
+                          <li class="nav-item">
                             <a class="nav-link active p-1 m-0" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();"
