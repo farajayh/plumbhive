@@ -58,7 +58,7 @@
                       </div>
                       @if(session('message'))
                             <h5 class="text-center text-success">{{session('message')}}</h5>
-                          @endif
+                      @endif
 
                     <div class="row">
                         <div class="col-md-12">

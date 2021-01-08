@@ -25,6 +25,28 @@
                                   @enderror
                               </div>
 
+                              <div class="form-row mb-4">
+                                  <div class="col">
+                                      <input type="text" id="defaultRegisterFormLastName" class="form-control @error('last_name') is-invalid @enderror" placeholder="Last Name" name="last_name" value="{{ old('last_name') }}" required autocomplete="name">
+                                  </div>
+                                  @error('last_name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                  @enderror
+                              </div>
+
+                              <div class="form-row mb-4">
+                                  <div class="col">
+                                      <input type="text" id="defaultRegisterFormUsername" class="form-control @error('username') is-invalid @enderror" placeholder="Usename" name="username" value="{{ old('username') }}" required autocomplete="name">
+                                  </div>
+                                  @error('username')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                  @enderror
+                              </div>
+
                               <input type="email" id="defaultRegisterFormEmail" class="form-control @error('email') is-invalid @enderror mb-4" placeholder="Email" name="email" value="{{ old('email') }}" required autocomplete="email">
                               @error('email')
                                     <span class="invalid-feedback" role="alert">

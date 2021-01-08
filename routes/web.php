@@ -23,10 +23,13 @@ Route::resource('comment', 'CommentController', ['only'=>['update', 'destroy']])
 Auth::routes();
 
 //Route::get('/test/{slug}', 'ThreadController@showsingle');
+Route::get('/profile', 'ProfileController@show_profile');
+Route::get('/change-password', 'ProfileController@show_change_password');
+Route::post('/change-password', 'ProfileController@change_password');
 Route::get('/post/{slug}', 'ThreadController@showsingle');
 Route::get('/category/{category}', 'ThreadController@posts_by_category');
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
-Route::get('/about', 'HomeController@about')->name('about');
+Route::view('/about', 'about');
 Route::get('/contact', 'HomeController@contact')->name('contact');
 Route::post('/contact', 'HomeController@contact_submit')->name('contact_submit');
 Route::post('comment/create/{thread}','CommentController@addThreadComment')->name('threadcomment.store');

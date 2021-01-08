@@ -30,10 +30,7 @@ class HomeController extends Controller
         return view('home', compact('threads'));
     }
 
-    public function about()
-    {
-        return view('about');
-    }
+    
 
     public function contact()
     {

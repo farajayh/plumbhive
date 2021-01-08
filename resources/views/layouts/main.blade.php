@@ -151,10 +151,13 @@
             <div class="dropdown-menu dropdown-menu-right sm-menu" aria-labelledby="navbarDropdownMenuLink-4">
                 <div class="container">
                     <div class="row">
-                      <div class="col-md-6 col-6">
+                      <div class="">
                           <ul class="nav flex-column">
                           <li class="nav-item">
-                            <a class="nav-link active p-1 m-0" href="#">Profile</a>
+                            <a class="nav-link active p-1 m-0" href="{{ url('profile') }}">Profile</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link active p-1 m-0" href="{{ url('change-password') }}">Change Password</a>
                           </li>
                           <li class="nav-item">
                             <a class="nav-link active p-1 m-0" href="{{ route('logout') }}"
@@ -162,10 +165,10 @@
                                     document.getElementById('logout-form').submit();"
                             >{{ __('Logout') }}</a>
                           </li>
-                        </ul>
+                          </ul>
                         </div>
                     </div>
-                  </div>
+                </div>
                   <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                       @csrf
                   </form>
