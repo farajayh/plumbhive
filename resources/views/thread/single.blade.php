@@ -40,7 +40,7 @@
                                       <img class="img-fluid" src="{{ asset('images/placeholder_avatar.gif') }}" alt="Generic placeholder image">
                                   </div>
                                   <div class="col-11">
-                                      <h5 class="mt-0 font-weight-bold"><a href="" style="color:#004483">{{ $comment->user->name }}</a> - <small>{{ $comment->created_at}}</small></h5>
+                                      <h5 class="mt-0 font-weight-bold"><a href="" style="color:#004483">{{ $comment->user->username }}</a> - <small>{{ $comment->created_at}}</small></h5>
                                       <p class="m-0 p-0">{{ $comment->body }}</p>
                                       <a href=""><p class="p-0 m-0 font-weight-bold" style="font-size:12px; color: #004483">{{ $comment->comments->count() }} Replie(s)</p></a>
                                   </div>

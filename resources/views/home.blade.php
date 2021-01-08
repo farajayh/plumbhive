@@ -66,7 +66,7 @@
                             <div class="media mb-2">
                                 <div class="media-body border border-light rounded p-2">
                                     <h5 class="mt-0 font-weight-bold"><a href="{{ url('post/'.$thread->thread_slug) }}" class="head-topic">{{ $thread->subject }}</a></h5>
-                                  <p class="p-0 m-0" style="font-size:10px;"><a href="" style="font-weight:bold; color: #004483;">Posted by {{ $thread->user->name }} </a> {{ $thread->created_at->diffForHumans() }} in
+                                  <p class="p-0 m-0" style="font-size:10px;"><a href="" style="font-weight:bold; color: #004483;">Posted by {{ $thread->user->username }} </a> {{ $thread->created_at->diffForHumans() }} in
                                   @foreach($thread->tags as $tag)
                                     <a href="" style="font-weight:bold; color: #004483;">{{$tag->name}}</a>
                                   @endforeach
