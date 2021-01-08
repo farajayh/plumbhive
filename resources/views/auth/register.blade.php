@@ -16,10 +16,10 @@
                               @csrf
                               <div class="form-row mb-4">
                                   <div class="col">
-                                      <input type="text" id="defaultRegisterFormFirstName" class="form-control @error('name') is-invalid @enderror" placeholder="Name" name="name" value="{{ old('name') }}" required autocomplete="name">
+                                      <input type="text" id="defaultRegisterFormFirstName" class="form-control @error('first_name') is-invalid @enderror" placeholder="First Name" name="first_name" value="{{ old('first_name') }}" required autocomplete="name">
                                   </div>
-                                  @error('name')
-                                    <span class="invalid-feedback" role="alert">
+                                  @error('first_name')
+                                    <span class="invalid-feedback" style="display: block" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                   @enderror
@@ -30,20 +30,19 @@
                                       <input type="text" id="defaultRegisterFormLastName" class="form-control @error('last_name') is-invalid @enderror" placeholder="Last Name" name="last_name" value="{{ old('last_name') }}" required autocomplete="name">
                                   </div>
                                   @error('last_name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                    <span class="invalid-feedback" style="display: block" role="alert">
+                                        <strong>{{ $errors->first('last_name') }}</strong>
                                     </span>
                                   @enderror
                               </div>
-
                               <div class="form-row mb-4">
                                   <div class="col">
                                       <input type="text" id="defaultRegisterFormUsername" class="form-control @error('username') is-invalid @enderror" placeholder="Usename" name="username" value="{{ old('username') }}" required autocomplete="name">
                                   </div>
                                   @error('username')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                      <span class="invalid-feedback" style="display: block" role="alert">
+                                          <strong>{{ $message }}</strong>
+                                      </span>
                                   @enderror
                               </div>
 

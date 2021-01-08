@@ -14,12 +14,17 @@
                         <div class="col-md-8 mx-auto">
                 <form class="text-center p-2" method="POST" action="{{ route('login') }}">
                 @csrf
-                  <input type="email" id="defaultLoginFormEmail" class="form-control @error('email') is-invalid @enderror mb-4" name="email" value="{{ old('email') }}" required autocomplete="email"  placeholder="E-mail">
-                  @error('email')
+                  <input type="text" id="defaultLoginFormEmail" class="form-control {{ $errors->has('username') || $errors->has('email') ? ' is-invalid' : '' }} mb-4" name="login_id" value="{{ old('username') ?: old('email') }}" required autocomplete="email"  placeholder="Username or E-mail">
+                  <!--@error('email')
                       <span class="invalid-feedback" role="alert">
                           <strong>{{ $message }}</strong>
                       </span>
-                  @enderror
+                  @enderror-->
+                  @if ($errors->has('username') || $errors->has('email'))
+                        <span class="invalid-feedback">
+                            <strong>{{ $errors->first('username') ?: $errors->first('email') }}</strong>
+                        </span>
+                  @endif
                   <input type="password" id="defaultLoginFormPassword" class="form-control @error('password') is-invalid @enderror mb-4" name="password" required autocomplete="current-password" placeholder="Password">
                   @error('password')
                       <span class="invalid-feedback" role="alert">

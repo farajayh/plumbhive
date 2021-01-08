@@ -139,7 +139,7 @@
                                     <img class="img-fluid" src="../images/placeholder_avatar.gif" alt="Generic placeholder image">
                                 </div>
                                 <div class="col-8">
-                                    <h5 class="mt-0 font-weight-bold"><a href="" style="color:#004483">Hi {{ explode(' ',Auth::user()->name)[1] }}</a></h5>
+                                    <h5 class="mt-0 font-weight-bold"><a href="" style="color:#004483">Hi {{ Auth::user()->username }}</a></h5>
                                     <p>Welcome to Plumbhive, where you can connect with Plumbers in the World</p>
                                 </div>
                               </div><hr style="border: 3px solid #004483;">
