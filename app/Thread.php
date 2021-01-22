@@ -33,7 +33,7 @@ class Thread extends Model
     ];
     
     public function getPreviewAttribute(){
-        return Str::limit($this->thread, 5, '...');
+        return Str::limit($this->thread, 500, '...');
     }
 
     public function user()

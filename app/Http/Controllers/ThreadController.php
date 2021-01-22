@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use App\Thread;
 use App\Tag;
 use Illuminate\Http\Request;
@@ -22,13 +23,18 @@ class ThreadController extends Controller
     {
         if($request->has('tags')){
             $tag = Tag::find($request->tags);
-            $threads = $tag->threads()->orderBy('id', 'DESC')->paginate(1);
+            $threads = $tag->threads()->orderBy('id', 'DESC')->paginate(10);
             $tag_name = strtoupper($tag->name);
         }else{
-            $threads=Thread::orderBy('id', 'DESC')->paginate(1);
+            $threads=Thread::orderBy('id', 'DESC')->paginate(10);
             $tag_name = 'ALL TOPICS';
         }
         return view('thread.index', compact('threads'), ['tag_name'=>$tag_name]);   
+    }
+
+    public function showreplies($id){
+        $comment = Comment::find($id);
+        print_r($comment->body);
     }
 
     /**
@@ -58,7 +64,7 @@ class ThreadController extends Controller
         ]);
         
         $subject = $request->subject;
-        $slug = str_replace(' ', '-', $subject);
+        $slug = str_replace(' ', '-', strtolower($subject));
         $slug_exist = Thread::where('thread_slug', $slug)
                         ->orderBy('id', 'DESC')
                         ->take(1)
@@ -83,8 +89,8 @@ class ThreadController extends Controller
             foreach($slug_exist as $se){
                 $old_subject = $se->subject;
                 $old_slug = $se->thread_slug;
-                if(str_replace(' ', '-', $old_subject) == $old_slug){
-                    $slug = $slug.'-2';
+                if(str_replace(' ', '-', strtolower($old_subject)) == $old_slug){
+                    $slug = $slug.'-1';
                 }else{
                     $inc = intval($old_slug[-1]) + 1;
                     $slug = $slug.'-'.strval($inc);

@@ -74,10 +74,10 @@
                         </div>
                       </div>
 
-                      <div class="col-md-12 mb-5" style="border-radius: 10px;">
+                      <!--<div class="col-md-12 mb-5" style="border-radius: 10px;">
                         <img src="{{ asset('images/contact-bg.jpg') }}" alt="Advert" class="img-fluid">
                         <p>Advert</p>
-                      </div>
+                      </div>-->
                     </div>
                 </div>
             </div>

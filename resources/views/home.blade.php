@@ -72,54 +72,11 @@
                                   @endforeach
                                   </p>
                                   <p class="p-0 mb-1 contentLength">{{ $thread->preview }}</p>
-                                    <a href=""><p class="p-0 m-0 font-weight-bold" style="font-size:12px; color: #004483">5 Replies</p></a>
+                                    <a href=""><p class="p-0 m-0 font-weight-bold" style="font-size:12px; color: #004483">{{ $thread->comments->count() }} Comment(s)</p></a>
                                 </div>
                             </div>
                         @endforeach
-                            <div class="media mb-2">
-                                <div class="media-body border border-light rounded p-2">
-                                    <h5 class="mt-0 font-weight-bold"><a href="" class="head-topic">Facebook acquires GIPHY</a></h5>
-                                  <p class="p-0 m-0" style="font-size:10px;"><a href="" style="font-weight:bold; color: #004483;">Adekunle</a> 5 hours ago in <a href="" style="font-weight:bold; color: #004483;">Latest Materials</a></p>
-                                  <p class="p-0 mb-1 contentLength">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus
-                                    odio, vestibulum in vulputate at, Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus
-                                    odio, vestibulum in vulputate at,Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus
-                                    odio, vestibulum in vulputate at,</p>
-                                    <a href=""><p class="p-0 m-0 font-weight-bold" style="font-size:12px; color: #004483">5 Replies</p></a>
-                                </div>
-                            </div>
-                            <div class="media mb-2">
-                                <div class="media-body border border-light rounded p-2">
-                                    <h5 class="mt-0 font-weight-bold"><a href="" class="head-topic">NEW Google Reveals the Fastest Growing Product Categories in Search Results.</a></h5>
-                                  <p class="p-0 m-0" style="font-size:10px;"><a href="" style="font-weight:bold; color: #004483;">Adekunle</a> 5 hours ago in <a href="" style="font-weight:bold; color: #004483;">Fixing and Corrections</a></p>
-                                  <p class="p-0 mb-1 contentLength">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus
-                                    odio, vestibulum in vulputate at, Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus
-                                    odio, vestibulum in vulputate at,Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus
-                                    odio, vestibulum in vulputate at,</p>
-                                    <a href=""><p class="p-0 m-0 font-weight-bold" style="font-size:12px; color: #004483">5 Replies</p></a>
-                                </div>
-                            </div>
-                            <div class="media mb-2">
-                                <div class="media-body border border-light rounded p-2">
-                                    <h5 class="mt-0 font-weight-bold"><a href="" class="head-topic">Facebook shares tips for an effective content calendar</a></h5>
-                                  <p class="p-0 m-0" style="font-size:10px;"><a href="" style="font-weight:bold; color: #004483;">Adekunle</a> 5 hours ago in <a href="" style="font-weight:bold; color: #004483;">Plumbing Tools</a></p>
-                                  <p class="p-0 mb-1 contentLength">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus
-                                    odio, vestibulum in vulputate at, Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus
-                                    odio, vestibulum in vulputate at,Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus
-                                    odio, vestibulum in vulputate at,</p>
-                                    <a href=""><p class="p-0 m-0 font-weight-bold" style="font-size:12px; color: #004483">5 Replies</p></a>
-                                </div>
-                            </div>
-                            <div class="media mb-2">
-                                <div class="media-body border border-light rounded p-2">
-                                    <h5 class="mt-0 font-weight-bold"><a href="" class="head-topic">Instagram testing new Stories feed navigation</a></h5>
-                                  <p class="p-0 m-0" style="font-size:10px;"><a href="" style="font-weight:bold; color: #004483;">Adekunle</a> 5 hours ago in <a href="" style="font-weight:bold; color: #004483;">Plumbing Marketing</a></p>
-                                  <p class="p-0 mb-1 contentLength">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus
-                                    odio, vestibulum in vulputate at, Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus
-                                    odio, vestibulum in vulputate at,Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus
-                                    odio, vestibulum in vulputate at,</p>
-                                    <a href=""><p class="p-0 m-0 font-weight-bold" style="font-size:12px; color: #004483">5 Replies</p></a>
-                                </div>
-                            </div>
+                            
                             <div>
                             <nav>
                                 <ul class="pagination pg-blue justify-content-center mt-4">
@@ -136,10 +93,10 @@
                         <div class="col-md-12 mb-5 white" style="border-radius: 10px;">
                             <div class="row mb-3 mt-3">
                                 <div class="col-4">
-                                    <img class="img-fluid" src="../images/placeholder_avatar.gif" alt="Generic placeholder image">
+                                    <img class="img-fluid" src="{{ Auth::user()->avatar ? '/uploads/avatars/'.Auth::user()->avatar : '../images/placeholder_avatar.gif'}}" alt="Generic placeholder image">
                                 </div>
                                 <div class="col-8">
-                                    <h5 class="mt-0 font-weight-bold"><a href="" style="color:#004483">Hi {{ Auth::user()->username }}</a></h5>
+                                    <h5 class="mt-0 font-weight-bold"><a href="" style="color:#004483">Hi {{ Auth::user()->username }},</a></h5>
                                     <p>Welcome to Plumbhive, where you can connect with Plumbers in the World</p>
                                 </div>
                               </div><hr style="border: 3px solid #004483;">
@@ -158,10 +115,10 @@
                         </div>
                       </div>
 
-                      <div class="col-md-12 mb-5" style="border-radius: 10px;">
+                      <!--<div class="col-md-12 mb-5" style="border-radius: 10px;">
                         <img src=" {{ asset('images/contact-bg.jpg') }}" alt="Advert" class="img-fluid">
                         <p>Advert</p>
-                      </div>
+                      </div>-->
                     </div>
                 </div>
             </div>

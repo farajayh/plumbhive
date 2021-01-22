@@ -53,16 +53,15 @@
                         <div class="col-md-6 col-6">
                             <ul class="nav flex-column">
                             <li class="nav-item">
-                              <a class="nav-link active p-1 m-0" href="#">All Topics</a>
-                              <a class="nav-link active p-1 m-0" href="#">Plumbing Marketing</a>
-                              <a class="nav-link active p-1 m-0" href="#">Plumbing Tools</a>
-                              <a class="nav-link active p-1 m-0" href="#">Plumbing Engineers</a>
-                              <a class="nav-link active p-1 m-0" href="#">Fixing and Corrections</a>
+                              <a class="nav-link active p-1 m-0" href="{{ route('thread.index') }}">All Topics</a>
+                              @foreach(\App\Tag::all() as $tag)
+                                <a class="nav-link active p-1 m-0" href="{{ url('category/'.strtolower(str_replace(' ', '-', $tag->name))) }}">{{ $tag->name }}</a>
+                              @endforeach
                             </li>
                           </ul>
                           </div>
                           <!-- /.col-md-4  -->
-                          <div class="col-md-6 col-6">
+                          <!--<div class="col-md-6 col-6">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
                                     <a class="nav-link active p-1 m-0" href="#">Blogs</a>
@@ -72,13 +71,13 @@
                                     <a class="nav-link active p-1 m-0" href="#">Active</a>
                                   </li>
                           </ul>
-                          </div>
+                          </div>-->
 
                       </div>
                     </div>
               </div>
             </li>
-            <li class="nav-item dropdown dmenu">
+            <!--<li class="nav-item dropdown dmenu">
               <a class="nav-link dropdown-toggle underLine" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">Marketplace</a>
 
@@ -86,7 +85,7 @@
                   <div class="container">
                       <div class="row">
 
-                            <!-- /.col-md-4  -->
+                            
                             <div class="col-md-6 col-6">
                               <ul class="nav flex-column">
                                   <li class="nav-item">
@@ -116,7 +115,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link underLine" href="plumbhive/top-feed.html">Top Feeds</a>
-            </li>
+            </li>-->
             <li class="nav-item">
                 <a class="nav-link underLine" href="{{ url('about') }}">About</a>
             </li>
@@ -125,11 +124,11 @@
             </li>
           </ul>
 
-          <form class="form-inline">
+          <!--<form class="form-inline">
             <div class="md-form my-0">
               <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
             </div>
-          </form>
+          </form>-->
 
           <ul class="navbar-nav nav-flex-icons">
           @guest
@@ -225,26 +224,26 @@
                         <h5 class="font-weight-bold">About Us</h5> <hr>
                           <a href="{{ url('about') }}">Who we are</a> <br>
                           <a href="{{url('contact')}}">Contact Us</a><br>
-                          <a href="index.html">Our Sites</a><br>
-                          <a href="in dex.html">In t he News</a><br>
+                          <!--<a href="index.html">Our Sites</a><br>
+                          <a href="in dex.html">In the News</a><br>-->
                         </div>
                     </div>
 
                     <div class="col-md-3 col-6 mb-3">
                         <div style="text-align:left" class="footer-details">
                         <h5 class="font-weight-bold">More Info</h5> <hr>
-                          <a href="plumbhive/terms.html">Terms and Condition</a> <br>
-                          <a href="plumbhive/privacy.html">Privacy Policy</a><br>
-                          <a href="plumbhive/offer.html">Special Offer</a><br>
+                          <a href="">Terms and Condition</a> <br>
+                          <a href="">Privacy Policy</a><br>
+                          <a href="">Special Offer</a><br>
                         </div>
                     </div>
 
                     <div class="col-md-3 col-6 mb-3">
                         <div style="text-align:left" class="footer-details">
-                        <h5 class="font-weight-bold">Related Companies</h5> <hr>
+                        <!--<h5 class="font-weight-bold">Related Companies</h5> <hr>
                           <a href="#!">Freelancer.com</a> <br>
                           <a href="#!">Escrow.com</a><br>
-                          <a href="#!">Start.com</a><br>
+                          <a href="#!">Start.com</a><br>-->
                         </div>
                     </div>
                   </div>
@@ -261,11 +260,11 @@
                 <div class="container">
                   <!-- <img src="/stylesheets/images/best/pay.png" class="img-fluid mt-2" alt=""/> -->
                   <ul class="footer_nav">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="{{ url('/') }}">Home</a></li>
                     <li><a href="{{ url('about') }}">About Us</a></li>
                     <li><a href="{{url('contact')}}">Contact Us</a></li>
-                    <li><a href="plumbhive/terms.html">Terms</a></li>
-                    <li><a href="pl umbhive/privac y.html">Privacy</a></li>
+                    <li><a href="">Terms</a></li>
+                    <li><a href="">Privacy</a></li>
                   </ul>
                 </div>
               </div>

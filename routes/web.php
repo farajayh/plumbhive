@@ -23,7 +23,9 @@ Route::resource('comment', 'CommentController', ['only'=>['update', 'destroy']])
 Auth::routes();
 
 //Route::get('/test/{slug}', 'ThreadController@showsingle');
+Route::get('/test/{id}', 'ThreadController@showreplies');
 Route::get('/profile', 'ProfileController@show_profile');
+Route::post('/profile', 'ProfileController@update_profile');
 Route::get('/change-password', 'ProfileController@show_change_password');
 Route::post('/change-password', 'ProfileController@change_password');
 Route::get('/post/{slug}', 'ThreadController@showsingle');
