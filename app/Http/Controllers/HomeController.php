@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Thread;
 use App\Mails;
+use Auth;
 
 
 class HomeController extends Controller
@@ -30,6 +31,14 @@ class HomeController extends Controller
         return view('home', compact('threads'));
     }
 
+    public function user_post()
+    {
+        $id = Auth::user()->id;
+        $threads = Thread::where('user_id', $id)
+                            ->orderBy('id', 'DESC')
+                            ->paginate(10);
+        return view('home', compact('threads'));
+    }
     
 
     public function contact()

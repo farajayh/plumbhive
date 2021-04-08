@@ -156,6 +156,9 @@
                             <a class="nav-link active p-1 m-0" href="{{ url('profile') }}">Profile</a>
                           </li>
                           <li class="nav-item">
+                            <a class="nav-link active p-1 m-0" href="{{ url('/dashboard/posts') }}">View your posts</a>
+                          </li>
+                          <li class="nav-item">
                             <a class="nav-link active p-1 m-0" href="{{ url('change-password') }}">Change Password</a>
                           </li>
                           <li class="nav-item">

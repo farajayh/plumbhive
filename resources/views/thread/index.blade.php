@@ -12,15 +12,14 @@
                     <!-- Search Button -->
                     <div class="row my-4">
                         <div class="col-12 col-md-12">
-                            <form class="card card-sm p-0 m-0">
+                            <form class="card card-sm p-0 m-0" method="GET" action="{{ url('/') }}">
                                 <div class="card-body row no-gutters align-items-center">
                                     <div class="col-auto">
                                         <i class="fa fa-search h4 text-body mr-2"></i>
                                     </div>
                                     <div class="col">
-                                        <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search topics or keywords">
+                                        <input name="search" class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search topics or keywords">
                                     </div>
-
                                 </div>
                             </form>
                         </div>
@@ -32,12 +31,12 @@
                         <div class="col-md-7 col-5 mb-3">
                             <h5 class="mt-0 font-weight-bold desp" style="color:purple">{{ $tag_name }}</h5>
                         </div>
-                        <div class="col-md-1 col-2 mb-3">
+                        <!--<div class="col-md-1 col-2 mb-3">
                           <h5 class="mt-0 font-weight-bold desp"><a href="#!" style="color:purple; border-bottom:3px solid #b00; padding-bottom: 5px;">FEEDS</a></h5>
                       </div>
                       <div class="col-md-3 col-5 mb-3">
                           <h5 class="mt-0 font-weight-bold desp"><a href="#!" style="color:purple">MOST RECENTS</a></h5>
-                      </div>
+                      </div>-->
                       </div>
                     </div>
 
@@ -47,7 +46,7 @@
                           <div class="media mb-2">
                                 <div class="media-body border border-light rounded p-2">
                                     <h5 class="mt-0 font-weight-bold"><a href="{{ url('post/'.$thread->thread_slug) }}" class="head-topic">{{ $thread->subject }}</a></h5>
-                                  <p class="p-0 m-0" style="font-size:10px;"><a href="" style="font-weight:bold; color: #004483;">Posted by {{ $thread->user->username }} </a> {{ $thread->created_at->diffForHumans() }} in
+                                  <p class="p-0 m-0" style="font-size:13px;"><span style="font-weight:bold; color: #004483;">Posted by {{ $thread->user->username }}  {{ $thread->created_at->diffForHumans() }} in</span>
                                   @foreach($thread->tags as $tag)
                                     <a href="" style="font-weight:bold; color: #004483;">{{$tag->name}}</a>
                                   @endforeach

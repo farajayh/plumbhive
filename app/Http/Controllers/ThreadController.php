@@ -25,17 +25,24 @@ class ThreadController extends Controller
             $tag = Tag::find($request->tags);
             $threads = $tag->threads()->orderBy('id', 'DESC')->paginate(10);
             $tag_name = strtoupper($tag->name);
+        }elseif($request->has('search')){
+            $kw = $request->search;
+            $tag_name = 'ALL TOPICS';
+            $threads = Thread::where('subject', 'like', '%'.$kw.'%')
+                            ->orderBy('id', 'DESC')
+                            ->paginate(10);
         }else{
             $threads=Thread::orderBy('id', 'DESC')->paginate(10);
             $tag_name = 'ALL TOPICS';
         }
+        
         return view('thread.index', compact('threads'), ['tag_name'=>$tag_name]);   
     }
 
-    public function showreplies($id){
+    /*public function showreplies($id){
         $comment = Comment::find($id);
         print_r($comment->body);
-    }
+    }*/
 
     /**
      * Show the form for creating a new resource.
@@ -64,7 +71,7 @@ class ThreadController extends Controller
         ]);
         
         $subject = $request->subject;
-        $slug = str_replace(' ', '-', strtolower($subject));
+        $slug = str_replace(' ', '-', strtolower(preg_replace('/[^a-zA-Z0-9_ -]/s', '', $subject)));
         $slug_exist = Thread::where('thread_slug', $slug)
                         ->orderBy('id', 'DESC')
                         ->take(1)
@@ -153,6 +160,21 @@ class ThreadController extends Controller
         }*/
     }
 
+    public function posts_by_keyword(Request $request){
+        $kw = $request->search;
+        $threads = Thread::where('subject', 'like', '%'.$kw.'%')
+                            ->orderBy('id', 'DESC')
+                            ->paginate(10);
+       // $thread = Thread::where('thread_slug', $kw)->first();
+        if(!$threads){
+            abort('404');
+        }else{
+            $tag_name = 'ALL TOPICS';
+            return view('thread.index', compact('threads'), ['tag_name'=>$tag_name]);
+        }
+        
+    }
+
     public function posts_by_category($category)
     {
         $category = str_replace('-', ' ', ucwords($category));
@@ -162,7 +184,7 @@ class ThreadController extends Controller
         }else{
             $cat_id = $cat->id;
             $tag = Tag::find($cat_id);
-            $threads = $tag->threads()->orderBy('id', 'DESC')->paginate(1);
+            $threads = $tag->threads()->orderBy('id', 'DESC')->paginate(10);
             $tag_name = strtoupper($tag->name);
             return view('thread.index', compact('threads'), ['tag_name'=>$tag_name]);
         }

@@ -22,7 +22,7 @@ Route::resource('comment', 'CommentController', ['only'=>['update', 'destroy']])
 
 Auth::routes();
 
-//Route::get('/test/{slug}', 'ThreadController@showsingle');
+Route::post('/test', 'ThreadController@posts_by_keyword');
 Route::get('/test/{id}', 'ThreadController@showreplies');
 Route::get('/profile', 'ProfileController@show_profile');
 Route::post('/profile', 'ProfileController@update_profile');
@@ -31,6 +31,7 @@ Route::post('/change-password', 'ProfileController@change_password');
 Route::get('/post/{slug}', 'ThreadController@showsingle');
 Route::get('/category/{category}', 'ThreadController@posts_by_category');
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+Route::get('/dashboard/posts', 'HomeController@user_post')->name('dashboard_posts');
 Route::view('/about', 'about');
 Route::get('/contact', 'HomeController@contact')->name('contact');
 Route::post('/contact', 'HomeController@contact_submit')->name('contact_submit');
